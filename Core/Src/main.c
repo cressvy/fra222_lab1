@@ -68,6 +68,10 @@ PortPin L[4] =
 
 //For Button Contenter
 uint16_t ButtonMatrix=0;
+uint32_t Sum = 0;
+uint32_t LastButton = 0;
+uint32_t fn = 0;
+uint32_t mn = 0;
 
 /* USER CODE END PV */
 
@@ -130,6 +134,88 @@ int main(void)
 	  	  {
 	  		  timestamp =HAL_GetTick() + 10;
 	  		  ReadMatrixButton_1Row();
+	  		if (LastButton == 0 && ButtonMatrix > 0)
+	  					{
+	  						if (ButtonMatrix == 8) // 0
+	  						{
+	  							Sum += 8;
+	  						}
+
+	  						else if (ButtonMatrix == 4) // 1
+	  						{
+	  							Sum += 4;
+	  						}
+
+	  						else if (ButtonMatrix == 64) // 2
+	  						{
+	  							Sum += 64;
+	  						}
+
+	  						else if (ButtonMatrix == 1024) // 3
+	  						{
+	  							Sum += 1024;
+	  						}
+
+	  						else if (ButtonMatrix == 2) // 4
+	  						{
+
+	  							Sum += 2;
+	  						}
+
+	  						else if (ButtonMatrix == 32) // 5
+	  						{
+	  							if (SumNumber == 1548){ // 64340
+	  								mn += 1;
+	  							}
+
+	  							Sum += 32;
+	  						}
+
+	  						else if (ButtonMatrix == 512) // 6
+	  						{
+	  							if(SumNumber == 0){
+	  								fn += 1;
+	  							}
+
+	  							Sum += 512;
+
+	  						}
+
+	  						else if (ButtonMatrix == 1) // 7
+	  						{
+	  							Sum += 1;
+	  						}
+
+	  						else if (ButtonMatrix == 16 ) // 8
+	  						{
+	  							Sum += 16;
+	  						}
+
+
+	  						else if (ButtonMatrix == 256) // 9
+	  						{
+	  							Sum += 256;
+	  						}
+
+	  						//LastButton = Button ;
+
+	  						if (ButtonMatrix == 4096) // clear
+	  							{
+	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET); // LED OFF
+	  							Sum = 0;
+	  							fn = 0;
+	  							mn = 0;
+	  							}
+
+	  						if ((ButtonMatrix == 32768) && (Sum == 1622) && (fn == 1 ) && (mn == 1) ) // OK 64340500064
+	  							{
+
+	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET); // LED ON
+	  							}
+	  					}
+
+	  					LastButton = ButtonMatrix;
+	  				}
 
 	  	  }
 	 }
