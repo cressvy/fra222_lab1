@@ -69,9 +69,9 @@ PortPin L[4] =
 //For Button Contenter
 uint16_t ButtonMatrix=0;
 uint32_t Sum = 0;
-uint32_t LastButton = 0;
-uint32_t fn = 0;
-uint32_t mn = 0;
+uint8_t LastButton = 0;
+uint8_t cs = 0;//check sequent
+uint8_t count = 0 ;//count digit
 
 /* USER CODE END PV */
 
@@ -139,6 +139,7 @@ int main(void)
 	  						if (ButtonMatrix == 8) // 0
 	  						{
 	  							Sum += 8;
+	  							if(Sum == 1596){sc += 1;}
 	  						}
 
 	  						else if (ButtonMatrix == 4) // 1
@@ -158,26 +159,23 @@ int main(void)
 
 	  						else if (ButtonMatrix == 2) // 4
 	  						{
-
 	  							Sum += 2;
+
+	  							if(Sum == 514){sc += 1;}
+	  							if(Sum == 1540){sc += 1;}
 	  						}
 
 	  						else if (ButtonMatrix == 32) // 5
 	  						{
-	  							if (SumNumber == 1548){ // 64340
-	  								mn += 1;
-	  							}
-
 	  							Sum += 32;
+	  							if(Sum == 1580){sc += 1;}
 	  						}
 
 	  						else if (ButtonMatrix == 512) // 6
 	  						{
-	  							if(SumNumber == 0){
-	  								fn += 1;
-	  							}
 
 	  							Sum += 512;
+	  							if (Sum == 512){sc += 1;}
 
 	  						}
 
@@ -189,6 +187,7 @@ int main(void)
 	  						else if (ButtonMatrix == 16 ) // 8
 	  						{
 	  							Sum += 16;
+	  							if(Sum == 1606){sc += 1;}
 	  						}
 
 
@@ -203,11 +202,11 @@ int main(void)
 	  							{
 	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET); // LED OFF
 	  							Sum = 0;
-	  							fn = 0;
-	  							mn = 0;
+	  							sc = 0;
+	  							count =0;
 	  							}
 
-	  						if ((ButtonMatrix == 32768) && (Sum == 1622) && (fn == 1 ) && (mn == 1) ) // OK 64340500064
+	  						if ((ButtonMatrix == 32768) && (Sum == 1622) && (count == 11) && (cs == 5))
 	  							{
 
 	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET); // LED ON
@@ -215,7 +214,7 @@ int main(void)
 	  					}
 
 	  					LastButton = ButtonMatrix;
-	  				}
+	  					count += 1
 
 	  	  }
 	 }
