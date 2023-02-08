@@ -139,7 +139,6 @@ int main(void)
 	  						if (ButtonMatrix == 8) // 0
 	  						{
 	  							Sum += 8;
-	  							if(Sum == 1596){sc += 1;}
 	  						}
 
 	  						else if (ButtonMatrix == 4) // 1
@@ -160,22 +159,29 @@ int main(void)
 	  						else if (ButtonMatrix == 2) // 4
 	  						{
 	  							Sum += 2;
-
-	  							if(Sum == 514){sc += 1;}
-	  							if(Sum == 1540){sc += 1;}
+	  							if(Sum == 514){
+	  								cs += 1;
+	  							}
+	  							if(Sum == 1540){
+	  								cs += 1;
+	  							}
 	  						}
 
 	  						else if (ButtonMatrix == 32) // 5
 	  						{
 	  							Sum += 32;
-	  							if(Sum == 1580){sc += 1;}
+	  							if(Sum == 1580){
+	  								cs += 1;
+	  							}
 	  						}
 
 	  						else if (ButtonMatrix == 512) // 6
 	  						{
 
 	  							Sum += 512;
-	  							if (Sum == 512){sc += 1;}
+	  							if (Sum == 512){
+	  								cs += 1;
+	  							}
 
 	  						}
 
@@ -187,7 +193,9 @@ int main(void)
 	  						else if (ButtonMatrix == 16 ) // 8
 	  						{
 	  							Sum += 16;
-	  							if(Sum == 1606){sc += 1;}
+	  							if(Sum == 1606){
+	  								cs += 1;
+	  							}
 	  						}
 
 
@@ -202,7 +210,7 @@ int main(void)
 	  							{
 	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET); // LED OFF
 	  							Sum = 0;
-	  							sc = 0;
+	  							cs = 0;
 	  							count =0;
 	  							}
 
@@ -214,7 +222,7 @@ int main(void)
 	  					}
 
 	  					LastButton = ButtonMatrix;
-	  					count += 1
+	  					count += 1;
 
 	  	  }
 	 }
