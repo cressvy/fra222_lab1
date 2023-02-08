@@ -139,26 +139,31 @@ int main(void)
 	  						if (ButtonMatrix == 8) // 0
 	  						{
 	  							Sum += 8;
+	  							count += 1;
 	  						}
 
 	  						else if (ButtonMatrix == 4) // 1
 	  						{
 	  							Sum += 4;
+	  							count += 1;
 	  						}
 
 	  						else if (ButtonMatrix == 64) // 2
 	  						{
 	  							Sum += 64;
+	  							count += 1;
 	  						}
 
 	  						else if (ButtonMatrix == 1024) // 3
 	  						{
 	  							Sum += 1024;
+	  							count += 1;
 	  						}
 
 	  						else if (ButtonMatrix == 2) // 4
 	  						{
 	  							Sum += 2;
+	  							count += 1;
 	  							if(Sum == 514){
 	  								cs += 1;
 	  							}
@@ -170,6 +175,7 @@ int main(void)
 	  						else if (ButtonMatrix == 32) // 5
 	  						{
 	  							Sum += 32;
+	  							count += 1;
 	  							if(Sum == 1580){
 	  								cs += 1;
 	  							}
@@ -179,6 +185,7 @@ int main(void)
 	  						{
 
 	  							Sum += 512;
+	  							count += 1;
 	  							if (Sum == 512){
 	  								cs += 1;
 	  							}
@@ -188,11 +195,13 @@ int main(void)
 	  						else if (ButtonMatrix == 1) // 7
 	  						{
 	  							Sum += 1;
+	  							count += 1;
 	  						}
 
 	  						else if (ButtonMatrix == 16 ) // 8
 	  						{
 	  							Sum += 16;
+	  							count += 1;
 	  							if(Sum == 1606){
 	  								cs += 1;
 	  							}
@@ -202,6 +211,7 @@ int main(void)
 	  						else if (ButtonMatrix == 256) // 9
 	  						{
 	  							Sum += 256;
+	  							count += 1;
 	  						}
 
 	  						//LastButton = Button ;
@@ -222,7 +232,6 @@ int main(void)
 	  					}
 
 	  					LastButton = ButtonMatrix;
-	  					count += 1;
 
 	  	  }
 	 }
