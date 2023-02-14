@@ -69,9 +69,9 @@ PortPin L[4] =
 //For Button Contenter
 uint16_t ButtonMatrix=0;
 uint32_t Sum = 0;
-uint8_t LastButton = 0;
-uint8_t cs = 0;//check sequent
-uint8_t count = 0 ;//count digit
+uint32_t LastButton = 0;
+uint32_t cs = 0;//check sequent
+uint32_t count = 0 ;//count digit
 
 /* USER CODE END PV */
 
@@ -202,9 +202,6 @@ int main(void)
 	  						{
 	  							Sum += 16;
 	  							count += 1;
-	  							if(Sum == 1606){
-	  								cs += 1;
-	  							}
 	  						}
 
 
@@ -224,9 +221,8 @@ int main(void)
 	  							count =0;
 	  							}
 
-	  						if ((ButtonMatrix == 32768) && (Sum == 1622) && (count == 11) && (cs == 5))
+	  						if ((ButtonMatrix == 32768) && (Sum == 1622)&&(cs == 4)&&(count == 11))
 	  							{
-
 	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET); // LED ON
 	  							}
 	  					}
